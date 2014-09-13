@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery UI Bangla Datepicker</title>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui-bangla.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <script>
+        $(function () {
+            var fullmonth_array = $.datepicker.regional['bn-BD'].monthNames;
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $("#date_of_birth").datepicker({
+                dateFormat: "yy/mm/dd",
+                monthNamesShort: fullmonth_array,
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+    </script>
+
+
+</head>
+<body>
+<h1>বাংলা তারিখ (Bangla Date):</h1>
+<input type="text" id="date_of_birth"/>
+
+<script type="text/javascript">
+    $(document).on("change", "#date_of_birth", function () {
+        var dateArr = $(this).val().split('/');
+        var banglaDate = mrt(dateArr[0]) + '/' + mrt(dateArr[1]) + '/' + mrt(dateArr[2]);
+        $(this).val(banglaDate);
+    });
+</script>
+
+</body>
+</html>
+
+
